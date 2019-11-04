@@ -1,24 +1,35 @@
 [
   {
-    "_id": 99,
-    "email": "dcase@nwmissouri.edu",
-    "given": "Denise",
-    "family": "Case",
+    "_id": 1,
+    "email": "S536844@nwmissouri.edu",
+    "given": "Chinmayi",
+    "family": "Ambati",
     "city": "Maryville",
     "state": "MO",
     "zip": 64468,
     "country": "USA",
-    "URL": "https://www.nwmissouri.edu/csis/directory/case.htm"
+    "URL": "https://www.linkedin.com/in/chinmayi-a-297a43a1/"
   },
   {
-    "_id": 100,
-    "email": "michael@nwmissouri.edu",
-    "given": "Michael",
-    "family": "Case",
-    "city": "Rogers",
+    "_id": 2,
+    "email": "S536979@nwmissouri.edu",
+    "given": "MahaLakshmi",
+    "family": "Kongari",
+    "city": "Maryville",
     "state": "MO",
     "zip": 64468,
     "country": "USA",
-    "URL": "https://www.nwmissouri.edu/csis/directory/rogers.htm"
+    "URL": "https://www.linkedin.com/in/mahalakshmi-kongari-7aaa04a7/"
+  },
+  {
+    "_id": 3,
+    "email": "S536974@nwmissouri.edu",
+    "given": "Deepthi Tejaswani",
+    "family": "Chokka",
+    "city": "Maryville",
+    "state": "MO",
+    "zip": 64468,
+    "country": "USA",
+    "URL": "https://www.linkedin.com/in/deepthi-chokka-042732159/"
   }
 ]
