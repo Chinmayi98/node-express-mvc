@@ -5,10 +5,11 @@ Working on the MVC app!
 
 ## Group and Section
 Group - 01
+
 Section - 04
 
 ## Team Slide
-![](https://raw.githubusercontent.com/Chinmayi98/mvc-app/master/TeamSlide.PNG)
+![](https://raw.githubusercontent.com/Chinmayi98/mvc-app/master/Team.PNG)
 
 ## Team Members
 - Chinmayi Ambati
@@ -21,8 +22,3 @@ Section - 04
 1. Student is assigned to Chinmayi
 1. Course is assigned to Mahalakshmi 
 1. Section is assigned to Deepthi
-
-
-
-
-
