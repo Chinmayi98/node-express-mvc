@@ -1,8 +1,9 @@
 # mvc-app
 Working on the MVC app!
 
-[Source Link](https://github.com/Chinmayi98/mvc-app)
+- [Source Link](https://github.com/Chinmayi98/mvc-app)
 
+- [Demo Link](http://localhost:3004/)
 ## Group and Section
 Group - 01
 
