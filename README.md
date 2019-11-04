@@ -4,8 +4,11 @@ Working on the MVC app!
 [Source Link](https://github.com/Chinmayi98/mvc-app)
 
 ## Group and Section
-Group 1
+Group - 01
 Section - 04
+
+## Team Slide
+![](https://raw.githubusercontent.com/Chinmayi98/mvc-app/master/TeamSlide.PNG)
 
 ## Team Members
 - Chinmayi Ambati
