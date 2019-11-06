@@ -2,7 +2,7 @@
 *  Developer controller
 *  Handles requests related to developer resources.
 *
-* @author Denise Case <dcase@nwmissouri.edu>
+* @author Deepthi Tejaswani Chokka <s536974@nwmissouri.edu>
 *
 */
 const express = require('express')
