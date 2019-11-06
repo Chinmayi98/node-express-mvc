@@ -31,7 +31,7 @@ const DeveloperSchema = new mongoose.Schema({
       type: Number,
       minlength: 1,
       maxlength: 3,
-      required: true,
+      required: true
   },
   Github: {
     type: String,
@@ -51,6 +51,12 @@ const DeveloperSchema = new mongoose.Schema({
     type: Number,
     minlength: 1,
     maxlength: 2,
-    required: true,
+    required: true
+  },
+  Hobby:{
+    type: String,
+    minlength: 2,
+    maxlength: 100,
+    required: true
   }
 })
