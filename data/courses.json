@@ -6,7 +6,8 @@
         "Name": "Developing Web Apps and Services",
         "inSpring": false,
         "inSummer": false,
-        "inFall": true
+        "inFall": true,
+        "Department": "CSIS"
     },
 
     {
@@ -16,7 +17,8 @@
         "Name": "Object Oriented Programming",
         "inSpring": false,
         "inSummer": false,
-        "inFall": true
+        "inFall": true,
+        "Department": "CSIS"
     },
 
     {
@@ -26,7 +28,8 @@
         "Name": "Advanced DataBase systems",
         "inSpring": false,
         "inSummer": false,
-        "inFall": true
+        "inFall": true,
+        "Department": "CSIS"
     },
 
     {
@@ -36,7 +39,8 @@
         "Name": "Patterns and Frameworks",
         "inSpring": true,
         "inSummer": false,
-        "inFall": false
+        "inFall": false,
+        "Department": "CSIS"
     },
 
     {
@@ -46,7 +50,8 @@
         "Name": "Machine Learning",
         "inSpring": false,
         "inSummer": true,
-        "inFall": false
+        "inFall": false,
+        "Department": "CSIS"
     },
 
     {
@@ -56,7 +61,8 @@
         "Name": "Big Data",
         "inSpring": true,
         "inSummer": false,
-        "inFall": false
+        "inFall": false,
+        "Department": "CSIS"
     }
 ]
 
