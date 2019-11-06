@@ -1,3 +1,11 @@
+/**
+*  Developer model
+*  Describes the characteristics of each attribute in a developer resource.
+*
+* @author Denise Case <denisecase@gmail.com>
+* @requires mongoose
+*
+*/
 const mongoose = require('mongoose')
 
 const DeveloperSchema = new mongoose.Schema({
@@ -7,14 +15,14 @@ const DeveloperSchema = new mongoose.Schema({
     required: true
   },
   SchoolNumber: {
-    type: Char,
+    type: String,
     minlength: 2,
     maxlength: 100,
     required: false,
     default: 'School Number'
   },
   CourseNumber: {
-    type: Char,
+    type: String,
     minlength: 3,
     maxlength: 100,
     required: false,

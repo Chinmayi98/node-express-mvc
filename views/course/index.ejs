@@ -4,7 +4,7 @@
   <div class=row>
     <div class="col col-md-12">
       <a href="course/create" class="btn btn-primary new">
-        Create a new developer
+        Create a new course
       </a>
 
       <h2>Recent entries</h2>
@@ -21,12 +21,12 @@
         <div class="panel-body">
 
             <br> ID: <%=  course._id %>
-            <br> SchoolNumber: <%=course.schoolnumber%>
-            <br> CourseNumber: <%=course.coursenumber%>
-            <br> Name: <%=course.name%>
-            <br> inSpring: <%=course.inspring %>
-            <br> inSummer: <%=course.insummer %>
-            <br> inFall: <%=course.infall %>
+            <br> SchoolNumber: <%=course.SchoolNumber%>
+            <br> CourseNumber: <%=course.CourseNumber%>
+            <br> Name: <%=course.Name%>
+            <br> inSpring: <%=course.inSpring %>
+            <br> inSummer: <%=course.inSummer %>
+            <br> inFall: <%=course.inFall %>
 
           <hr>
           <a href="/course/delete/<%= course._id  %>" class="btn btn-danger"> Delete </a>
