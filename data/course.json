@@ -1,0 +1,62 @@
+[
+    {
+        "_id" : 1,
+        "SchoolNumber": "44",
+        "CourseNumber": "563",
+        "Name": "Developing Web Apps and Services",
+        "inSpring": false,
+        "inSummer": false,
+        "inFall": true
+    },
+
+    {
+        "_id" : 2,
+        "SchoolNumber": "44",
+        "CourseNumber": "564",
+        "Name": "Object Oriented Programming",
+        "inSpring": false,
+        "inSummer": false,
+        "inFall": true
+    },
+
+    {
+        "_id" : 3,
+        "SchoolNumber": "44",
+        "CourseNumber": "560",
+        "Name": "Advanced DataBase systems",
+        "inSpring": false,
+        "inSummer": false,
+        "inFall": true
+    },
+
+    {
+        "_id" : 4,
+        "SchoolNumber": "44",
+        "CourseNumber": "561",
+        "Name": "Patterns and Frameworks",
+        "inSpring": true,
+        "inSummer": false,
+        "inFall": false
+    },
+
+    {
+        "_id" : 5,
+        "SchoolNumber": "44",
+        "CourseNumber": "562",
+        "Name": "Machine Learning",
+        "inSpring": false,
+        "inSummer": true,
+        "inFall": false
+    },
+
+    {
+        "_id" : 6,
+        "SchoolNumber": "44",
+        "CourseNumber": "563",
+        "Name": "Big Data",
+        "inSpring": true,
+        "inSummer": false,
+        "inFall": false
+    }
+]
+
