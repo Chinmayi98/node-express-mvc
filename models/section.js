@@ -44,6 +44,6 @@ const DeveloperSchema = new mongoose.Schema({
     maxlength: 100,
     required: true,
     unique: true 
-  },
+  }
 
 })
