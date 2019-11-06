@@ -35,15 +35,15 @@ api.get('/findone/:id', (req, res) => {
 // GET to this controller base URI (the default)
 api.get('/', (req, res) => {
   res.render('section/index.ejs', {
-    developers: req.app.locals.sections.query
+    sections: req.app.locals.sections.query
   })
 })
 
 // GET create
 api.get('/create', (req, res) => {
   res.render('section/create', {
-    developers: req.app.locals.sections.query,
-    developer: new Model()
+    sections: req.app.locals.sections.query,
+    section: new Model()
   })
 })
 
@@ -54,7 +54,7 @@ api.get('/delete/:id', (req, res) => {
   const item = find(data, { _id: id })
   if (!item) { return res.end(notfoundstring + id) }
   res.render('section/delete', {
-    developer: item
+    section: item
   })
 })
 
@@ -65,7 +65,7 @@ api.get('/details/:id', (req, res) => {
   const item = find(data, { _id: id })
   if (!item) { return res.end(notfoundstring + id) }
   res.render('section/details', {
-    developer: item
+    section: item
   })
 })
 
@@ -76,7 +76,7 @@ api.get('/edit/:id', (req, res) => {
   const item = find(data, { _id: id })
   if (!item) { return res.end(notfoundstring + id) }
   res.render('section/edit', {
-    developer: item
+    section: item
   })
 })
 
@@ -89,12 +89,12 @@ api.post('/save', (req, res) => {
   const item = new Model()
   console.info(`NEW ID ${req.body._id}`)
   item._id = parseInt(req.body._id)
-  item.sectionnumber = req.body.sectionnumber
-  item.days = req.body.days
-  item.starttime = req.body.starttime
-  item.roomnumber = req.body.roomnumber
-  item.instructiorid = req.body.instructorid
-  item.courseid = req.body.courseid
+  item.SectionNumber = req.body.SectionNumber
+  item.Days = req.body.Days
+  item.StartTime = req.body.StartTime
+  item.RoomNumber = req.body.RoomNumber
+  item.InstructiorID = req.body.InstructorID
+  item.CourseID = req.body.CourseID
   res.send(`THIS FUNCTION WILL SAVE A NEW developer ${JSON.stringify(item)}`)
 })
 
