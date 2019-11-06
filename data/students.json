@@ -1,0 +1,62 @@
+[
+    {
+      "_id": 1,
+      "Given": "Chinmayi",
+      "Family": "Ambati",
+      "Email": "S536844@nwmissouri.edu",
+      "GPA": 3.8,
+      "Github": "https://github.com/Chinmayi98",
+      "Website": "https://www.linkedin.com/in/chinmayi-a-297a43a1/",
+      "SectionID": 4
+    },
+    {
+        "_id": 2,
+        "Given": "Alekhya",
+        "Family": "Pochampally",
+        "Email": "S536776@nwmissouri.edu",
+        "GPA": 3.4,
+        "Github": "https://github.com/AlekyaPochampally",
+        "Website": "https://www.linkedin.com/in/alekya-pochampally-643a07112/",
+        "SectionID": 1
+    },
+    {
+        "_id": 3,
+        "Given": "Bhavya",
+        "Family": "Gorrepati",
+        "Email": "S536778@nwmissouri.edu",
+        "GPA": 3.4,
+        "Github": "https://github.com/Bhavya-123",
+        "Website": "https://www.linkedin.com/in/Bhavya-a-297a43a1/",
+        "SectionID": 2
+    },
+    {
+        "_id": 4,
+        "Given": "MahaLakshmi",
+        "Family": "Kongari",
+        "Email": "S536979@nwmissouri.edu",
+        "GPA": 3.4,
+        "Github": "https://github.com/MahaLakshmiKongari",
+        "Website": "https://www.linkedin.com/in/mahalakshmi-kongari-7aaa04a7/",
+        "SectionID": 4
+    },
+    {
+        "_id": 5,
+        "Given": "Deepthi Tejaswani",
+        "Family": "Chokka",
+        "Email": "S536974@nwmissouri.edu",
+        "GPA": 3.4,
+        "Github": "https://github.com/Deepthi1003",
+        "Website": "https://www.linkedin.com/in/deepthi-chokka-042732159/",
+        "SectionID": 4
+    },
+    {
+        "_id": 6,
+        "Given": "Sushma",
+        "Family": "Yedugani",
+        "Email": "S536975@nwmissouri.edu",
+        "GPA": 3.4,
+        "Github": "https://github.com/SushmaYedugani",
+        "Website": "https://www.linkedin.com/in/Sushma-Yedugani-492732159/",
+        "SectionID": 4
+    }
+]
