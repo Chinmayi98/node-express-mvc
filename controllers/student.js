@@ -61,7 +61,7 @@ api.get('/delete/:id', (req, res) => {
 // GET /details/:id
 api.get('/details/:id', (req, res) => {
   const id = parseInt(req.params.id)
-  const data = req.app.locals.developers.query
+  const data = req.app.locals.students.query
   const item = find(data, { _id: id })
   if (!item) { return res.end(notfoundstring + id) }
   res.render('student/details', {
@@ -72,7 +72,7 @@ api.get('/details/:id', (req, res) => {
 // GET one
 api.get('/edit/:id', (req, res) => {
   const id = parseInt(req.params.id)
-  const data = req.app.locals.developers.query
+  const data = req.app.locals.students.query
   const item = find(data, { _id: id })
   if (!item) { return res.end(notfoundstring + id) }
   res.render('student/edit', {
