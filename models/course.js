@@ -14,6 +14,7 @@ const DeveloperSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  
   SchoolNumber: {
     type: String,
     minlength: 2,
