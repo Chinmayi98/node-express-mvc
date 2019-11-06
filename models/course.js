@@ -8,7 +8,7 @@
 */
 const mongoose = require('mongoose')
 
-const DeveloperSchema = new mongoose.Schema({
+const CourseSchema = new mongoose.Schema({
 
   _id: {
     type: Number,
@@ -18,14 +18,14 @@ const DeveloperSchema = new mongoose.Schema({
   SchoolNumber: {
     type: String,
     minlength: 2,
-    maxlength: 100,
+    maxlength: 2,
     required: false,
     default: 'School Number'
   },
   CourseNumber: {
     type: String,
     minlength: 3,
-    maxlength: 100,
+    maxlength: 3,
     required: false,
     default: 'Course Number'
   },
@@ -55,5 +55,15 @@ const DeveloperSchema = new mongoose.Schema({
     maxlength: 100,
     required: true,
     unique: true  
-  } 
+  },
+  Department: {
+    type: String,
+    minlength: 2,
+    maxlength: 100,
+    required: true
+  }
+
 })
+
+module.exports = mongoose.model('Course', CourseSchema)
+// the model Developer is for the developers collection in the database.
