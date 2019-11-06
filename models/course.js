@@ -3,18 +3,18 @@ const mongoose = require('mongoose')
 const DeveloperSchema = new mongoose.Schema({
 
   _id: {
-    type: String,
+    type: Number,
     required: true
   },
   SchoolNumber: {
-    type: String,
+    type: Char,
     minlength: 2,
     maxlength: 100,
     required: false,
     default: 'School Number'
   },
   CourseNumber: {
-    type: String,
+    type: Char,
     minlength: 3,
     maxlength: 100,
     required: false,
@@ -28,13 +28,13 @@ const DeveloperSchema = new mongoose.Schema({
     unique: true 
   },
   inSpring: {
-      type: Number,
+      type: Boolean,
       minlength: 1,
       maxlength: 3,
       required: true,
   },
   inSummer: {
-    type: String,
+    type: Boolean,
     minlength: 5,
     maxlength: 100,
     required: true,
@@ -45,5 +45,6 @@ const DeveloperSchema = new mongoose.Schema({
     minlength: 5,
     maxlength: 100,
     required: true,
-    unique: true   
+    unique: true  
+  } 
 })
