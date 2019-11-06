@@ -6,6 +6,7 @@ const DeveloperSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  
   SchoolNumber: {
     type: Char,
     minlength: 2,
