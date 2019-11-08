@@ -97,7 +97,7 @@ api.post('/save', (req, res) => {
   item.Website = req.body.Website
   item.SectionID = req.body.SectionID
   item.Hobby = req.body.Hobby
-  res.send(`THIS FUNCTION WILL SAVE A NEW student ${JSON.stringify(item)}`)
+  res.send(`THIS FUNCTION WILL SAVE A NEW student  ${JSON.stringify(item)}`)
 })
 
 // POST update with id
