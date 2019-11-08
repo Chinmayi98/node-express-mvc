@@ -9,7 +9,7 @@
 
 const mongoose = require('mongoose')
 
-const sectionSchema = new mongoose.Schema({
+const SectionSchema = new mongoose.Schema({
     _id: {
         type: Number,
         required: true
@@ -54,4 +54,4 @@ const sectionSchema = new mongoose.Schema({
       }
     
 })
-module.exports = mongoose.model('Section', StudentSchema)
+module.exports = mongoose.model('Section', SectionSchema)
