@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const DeveloperSchema = new mongoose.Schema({
+const StudentSchema = new mongoose.Schema({
 
   _id: {
     type: String,
@@ -60,3 +60,4 @@ const DeveloperSchema = new mongoose.Schema({
     required: true
   }
 })
+module.exports = mongoose.model('Student', StudentSchema)
