@@ -2,7 +2,7 @@
 *  Developer controller
 *  Handles requests related to developer resources.
 *
-* @author Chinmayi Ambatu <s536844@nwmissouri.edu>
+* @author Chinmayi Ambati <s536844@nwmissouri.edu>
 *
 */
 const express = require('express')
@@ -96,7 +96,8 @@ api.post('/save', (req, res) => {
   item.Github = req.body.Github
   item.Website = req.body.Website
   item.SectionID = req.body.SectionID
-  res.send(`THIS FUNCTION WILL SAVE A NEW student ${JSON.stringify(item)}`)
+  item.Hobby = req.body.Hobby
+  res.send(`THIS FUNCTION WILL SAVE A NEW student  ${JSON.stringify(item)}`)
 })
 
 // POST update with id

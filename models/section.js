@@ -1,8 +1,8 @@
 /**
-*  Developer model
-*  Describes the characteristics of each attribute in a developer resource.
+*  Section model
+*  Describes the characteristics of each attribute in a section resource.
 *
-* @author Denise Case <denisecase@gmail.com>
+* @author Deepthi Tejaswani Chokka <dtchokka@gmail.com>
 * @requires mongoose
 *
 */
@@ -52,6 +52,6 @@ const sectionSchema = new mongoose.Schema({
         required: true
         
       }
-    })
-    module.exports = mongoose.model('section', sectionSchema)
     
+})
+module.exports = mongoose.model('Section', StudentSchema)
