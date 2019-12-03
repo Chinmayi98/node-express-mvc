@@ -14,50 +14,55 @@ const CourseSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  SchoolNumber : {
+  
+  SchoolNumber: {
     type: String,
-    minlength: 1,
+    minlength: 2,
     maxlength: 2,
-    required: true,
-    unique: false,
-    default:44
+    required: false,
+    default: 'School Number'
   },
-  CourseNumber : {
+  CourseNumber: {
     type: String,
-    minlength: 1,
+    minlength: 3,
     maxlength: 3,
-    required: true,
-    default: 563
+    required: false,
+    default: 'Course Number'
   },
-  Name : {
+  Name: {
     type: String,
-    minlength: 4,
+    minlength: 5,
     maxlength: 100,
     required: true,
-    default: 'Developing Web Apps and Services'
+    unique: true 
   },
-  inSpring : {
-    type: Boolean,
-    minlength: 1,
-    maxlength: 3,
-    required: true,
-    
+  inSpring: {
+      type: Boolean,
+      minlength: 1,
+      maxlength: 3,
+      required: true,
   },
-  inSummer : {
+  inSummer: {
     type: Boolean,
-    minlength: 1,
-    maxlength: 3,
+    minlength: 5,
+    maxlength: 100,
     required: true,
-    
+    unique: true  
   },
-  inFall : {
+  inFall: {
     type: Boolean,
-    minlength: 1,
-    maxlength: 3,
+    minlength: 5,
+    maxlength: 100,
     required: true,
-   
+    unique: true  
+  },
+  Department: {
+    type: String,
+    minlength: 2,
+    maxlength: 100,
+    required: true
   }
-  
+
 })
 
 module.exports = mongoose.model('Course', CourseSchema)

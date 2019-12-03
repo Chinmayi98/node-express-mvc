@@ -7,148 +7,113 @@
 */
 const express = require('express')
 const api = express.Router()
-const LOG = require('../utils/logger.js')
 const Model = require('../models/student.js')
-const notfoundstring = 'student not found'
+const find = require('lodash.find')
+const notfoundstring = 'Could not find student with id='
 
 // RESPOND WITH JSON DATA  --------------------------------------------
+
 // GET all JSON
 api.get('/findall', (req, res) => {
-  LOG.info(`Handling /findall ${req}`)
-  Model.find({}, (err, data) => {
-    res.json(data)
-  })
+  res.setHeader('Content-Type', 'application/json')
+  const data = req.app.locals.students.query
+  res.send(JSON.stringify(data))
 })
 
 // GET one JSON by ID
 api.get('/findone/:id', (req, res) => {
-  LOG.info(`Handling /findone ${req}`)
+  res.setHeader('Content-Type', 'application/json')
   const id = parseInt(req.params.id)
-  Model.find({ _id: id }, (err, results) => {
-    if (err) { return res.end(notfoundstring) }
-    res.json(results[0])
-  })
+  const data = req.app.locals.students.query
+  const item = find(data, { _id: id })
+  if (!item) { return res.end(notfoundstring + id) }
+  res.send(JSON.stringify(item))
 })
 
 // RESPOND WITH VIEWS  --------------------------------------------
 
-// GET request to base page.
+// GET to this controller base URI (the default)
 api.get('/', (req, res) => {
-  LOG.info(`Handling GET / ${req}`)
-  Model.find({}, (err, data) => {
-    res.locals.students = data
-    res.render('student/index.ejs')
+  res.render('student/index.ejs', {
+    students: req.app.locals.students.query
   })
 })
 
-// GET to create page
+// GET create
 api.get('/create', (req, res) => {
-  LOG.info(`Handling GET /create ${req}`)
-  Model.find({}, (err, data) => {
-    res.locals.students = data
-    res.locals.student = new Model()
-    res.render('student/create')
+  res.render('student/create', {
+    students: req.app.locals.students.query,
+    student: new Model()
   })
 })
 
-// GET to details page
+// GET /delete/:id
 api.get('/delete/:id', (req, res) => {
-  LOG.info(`Handling GET /delete/:id ${req}`)
   const id = parseInt(req.params.id)
-  Model.find({ _id: id }, (err, results) => {
-    if (err) { return res.end(notfoundstring) }
-    LOG.info(`RETURNING VIEW FOR ${JSON.stringify(results)}`)
-    res.locals.student = results[0]
-    return res.render('student/delete.ejs')
+  const data = req.app.locals.students.query
+  const item = find(data, { _id: id })
+  if (!item) { return res.end(notfoundstring + id) }
+  res.render('student/delete', {
+    student: item
   })
 })
 
-// GET to create page
+// GET /details/:id
 api.get('/details/:id', (req, res) => {
-  LOG.info(`Handling GET /details/:id ${req}`)
   const id = parseInt(req.params.id)
-  Model.find({ _id: id }, (err, results) => {
-    if (err) { return res.end(notfoundstring) }
-    LOG.info(`RETURNING VIEW FOR ${JSON.stringify(results)}`)
-    res.locals.student = results[0]
-    return res.render('student/details.ejs')
+  const data = req.app.locals.students.query
+  const item = find(data, { _id: id })
+  if (!item) { return res.end(notfoundstring + id) }
+  res.render('student/details', {
+    student: item
   })
 })
 
-// GET to create page
+// GET one
 api.get('/edit/:id', (req, res) => {
-  LOG.info(`Handling GET /edit/:id ${req}`)
   const id = parseInt(req.params.id)
-  Model.find({ _id: id }, (err, results) => {
-    if (err) { return res.end(notfoundstring) }
-    LOG.info(`RETURNING VIEW FOR${JSON.stringify(results)}`)
-    res.locals.student = results[0]
-    return res.render('student/edit.ejs')
+  const data = req.app.locals.students.query
+  const item = find(data, { _id: id })
+  if (!item) { return res.end(notfoundstring + id) }
+  res.render('student/edit', {
+    student: item
   })
 })
 
-// RESPOND WITH DATA MODIFICATIONS  -------------------------------
+// HANDLE EXECUTE DATA MODIFICATION REQUESTS --------------------------------------------
 
-// post new
+// POST new
 api.post('/save', (req, res) => {
-  LOG.info(`Handling POST ${req}`)
-  LOG.debug(JSON.stringify(req.body))
+  console.info(`Handling POST ${req}`)
+  console.debug(JSON.stringify(req.body))
   const item = new Model()
-  LOG.info(`NEW ID ${req.body._id}`)
+  console.info(`NEW ID ${req.body._id}`)
   item._id = parseInt(req.body._id)
-  item.Email = req.body.Email
   item.Given = req.body.Given
-  item.family = req.body.family
+  item.Family = req.body.Family
+  item.Email = req.body.Email
   item.GPA = req.body.GPA
+  item.Github = req.body.Github
   item.Website = req.body.Website
-  item.GitHub = req.body.GitHub
-   item.Section = req.body.Section
-  item.save((err) => {
-    if (err) { return res.end('ERROR: student could not be saved') }
-    LOG.info(`SAVING NEW student ${JSON.stringify(item)}`)
-    return res.redirect('/student')
-  })
+  item.SectionID = req.body.SectionID
+  item.Hobby = req.body.Hobby
+  res.send(`THIS FUNCTION WILL SAVE A NEW student  ${JSON.stringify(item)}`)
 })
 
-// THESE ARE POST REQUEST ROUTES, WILL ONLY REPLY TO POST REQUEST.
-// ABOVE ROUTING IS GET REQUEST FOR CERTAIN IDS
-
-// post save w/ id
+// POST update with id
 api.post('/save/:id', (req, res) => {
-  LOG.info(`Handling SAVE request ${req}`)
+  console.info(`Handling SAVE request ${req}`)
   const id = parseInt(req.params.id)
-  LOG.info(`Handling SAVING ID=${id}`)
-  Model.updateOne({ _id: id },
-    { // use mongoose field update operator $set
-      $set: {
-        Email: req.body.Email,
-        Given: req.body.Given,
-        family: req.body.family,
-         GPA: req.body.GPA,
-         Website: req.body.Website,
-        GitHub: req.body.GitHub,
-         Section: req.body.Section,
-      }
-    },
-    (err, item) => {
-      if (err) { return res.end(notfoundstring) }
-      LOG.info(`ORIGINAL VALUES ${JSON.stringify(item)}`)
-      LOG.info(`UPDATED VALUES: ${JSON.stringify(req.body)}`)
-      LOG.info(`SAVING UPDATED student ${JSON.stringify(item)}`)
-      return res.redirect('/student')
-    })
+  console.info(`Handling SAVING ID=${id}`)
+  res.send(`THIS FUNCTION WILL SAVE CHANGES TO AN EXISTING student with id=${id}`)
 })
 
-// delete by id
+// DELETE id (uses HTML5 form method POST)
 api.post('/delete/:id', (req, res) => {
-  LOG.info(`Handling DELETE request ${req}`)
+  console.info(`Handling DELETE request ${req}`)
   const id = parseInt(req.params.id)
-  LOG.info(`Handling REMOVING ID=${id}`)
-  Model.remove({ _id: id }).setOptions({ single: true }).exec((err, deleted) => {
-    if (err) { return res.end(notfoundstring) }
-    console.log(`Permanently deleted item ${JSON.stringify(deleted)}`)
-    return res.redirect('/student')
-  })
+  console.info(`Handling REMOVING ID=${id}`)
+  res.send(`THIS FUNCTION WILL DELETE FOREVER THE EXISTING student with id=${id}`)
 })
 
 module.exports = api
