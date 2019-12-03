@@ -7,29 +7,27 @@
 */
 const express = require('express')
 const api = express.Router()
-const LOG = require('../utils/logger.js')
-const Model = require('../models/course.js')
-const find = require('lodash.find')
+const CourseModel = require('../models/course.js')
 const LOG = require('../utils/logger.js')
 const notfoundstring = 'Could not find course with id='
+
 
 // RESPOND WITH JSON DATA  --------------------------------------------
 
 // GET all JSON
 api.get('/findall', (req, res) => {
   LOG.info(`Handling /findall ${req}`)
-  Model.find({}, (err, data) => {
+  CourseModel.find({}, (err, data) => {
     if (err) { return res.end('Error finding all') }
     res.json(data)
   })
 })
 
-
 // GET one JSON by ID
 api.get('/findone/:id', (req, res) => {
   LOG.info(`Handling /findone ${req}`)
   const id = parseInt(req.params.id)
-  Model.find({ _id: id }, (err, results) => {
+  CourseModel.find({ _id: id }, (err, results) => {
     if (err) { return res.end(`notfoundstring ${id}`) }
     res.json(results[0])
   })
@@ -38,34 +36,31 @@ api.get('/findone/:id', (req, res) => {
 // RESPOND WITH VIEWS  --------------------------------------------
 
 // GET to this controller base URI (the default)
-
-  api.get('/', (req, res) => {
+api.get('/', (req, res) => {
   LOG.info(`Handling GET / ${req}`)
-  Model.find({}, (err, data) => {
+  CourseModel.find({}, (err, data) => {
     if (err) { return res.end('Error') }
     res.locals.courses = data
     res.render('course/index.ejs')
   })
 })
 
-
 // GET create
-
-  api.get('/create', (req, res) => {
+api.get('/create', (req, res) => {
   LOG.info(`Handling GET /create ${req}`)
-  Model.find({}, (err, data) => {
+  CourseModel.find({}, (err, data) => {
     if (err) { return res.end('error on create') }
     res.locals.courses = data
-    res.locals.course = new Model()
+    res.locals.course = new CourseModel()
     res.render('course/create')
   })
 })
 
 // GET /delete/:id
-  api.get('/delete/:id', (req, res) => {
+api.get('/delete/:id', (req, res) => {
   LOG.info(`Handling GET /delete/:id ${req}`)
   const id = parseInt(req.params.id)
-  Model.find({ _id: id }, (err, results) => {
+  CourseModel.find({ _id: id }, (err, results) => {
     if (err) { return res.end(notfoundstring) }
     LOG.info(`RETURNING VIEW FOR ${JSON.stringify(results)}`)
     res.locals.course = results[0]
@@ -74,24 +69,21 @@ api.get('/findone/:id', (req, res) => {
 })
 
 // GET /details/:id
-
 api.get('/details/:id', (req, res) => {
   LOG.info(`Handling GET /details/:id ${req}`)
   const id = parseInt(req.params.id)
-  Model.find({ _id: id }, (err, results) => {
+  CourseModel.find({ _id: id }, (err, results) => {
     if (err) { return res.end(notfoundstring) }
     LOG.info(`RETURNING VIEW FOR ${JSON.stringify(results)}`)
     res.locals.course = results[0]
     return res.render('course/details')
   })
 })
-
 // GET one
-
 api.get('/edit/:id', (req, res) => {
   LOG.info(`Handling GET /edit/:id ${req}`)
   const id = parseInt(req.params.id)
-  Model.find({ _id: id }, (err, results) => {
+  CourseModel.find({ _id: id }, (err, results) => {
     if (err) { return res.end(notfoundstring) }
     LOG.info(`RETURNING VIEW FOR${JSON.stringify(results)}`)
     res.locals.course = results[0]
@@ -99,23 +91,22 @@ api.get('/edit/:id', (req, res) => {
   })
 })
 
-
 // HANDLE EXECUTE DATA MODIFICATION REQUESTS --------------------------------------------
 
-// POST /save
+// POST new
 api.post('/save', (req, res) => {
-  LOG.info(`Handling POST ${req}`)
-  LOG.debug(JSON.stringify(req.body))
-  const item = new Model()
-  LOG.info(`NEW ID ${req.body._id}`)
+  console.info(`Handling POST ${req}`)
+  console.debug(JSON.stringify(req.body))
+  const item = new CourseModel()
+  console.info(`NEW ID ${req.body._id}`)
   item._id = parseInt(req.body._id)
-  item.SchoolNumber = req.body.SchoolNumber
-  item.CourseNumber = req.body.CourseNumber
+  item.schoolNumber = req.body.schoolNumber
+  item.courseNumber = req.body.courseNumber
   item.Name = req.body.Name
   item.inSpring = req.body.inSpring
   item.inSummer = req.body.inSummer
   item.inFall = req.body.inFall
-  item.Department = req.body.Department
+  item.Major = req.body.Major
   //res.send(`THIS FUNCTION WILL SAVE A NEW course ${JSON.stringify(item)}`)
   item.save((err) => {
     if (err) { return res.end('ERROR: item could not be saved') }
@@ -124,12 +115,12 @@ api.post('/save', (req, res) => {
   })
 })
 
-// POST save with id
+// POST update with id
 api.post('/save/:id', (req, res) => {
   LOG.info(`Handling SAVE request ${req}`)
   const id = parseInt(req.params.id)
   LOG.info(`Handling SAVING ID=${id}`)
-  Model.updateOne({ _id: id },
+  CourseModel.updateOne({ _id: id },
     { // use mongoose field update operator $set
       $set: {
         SchoolNumber: req.body.SchoolNumber,
@@ -151,17 +142,15 @@ api.post('/save/:id', (req, res) => {
 })
 
 // DELETE id (uses HTML5 form method POST)
-
 api.post('/delete/:id', (req, res) => {
   LOG.info(`Handling DELETE request ${req}`)
   const id = parseInt(req.params.id)
   LOG.info(`Handling REMOVING ID=${id}`)
-  Model.remove({ _id: id }).setOptions({ single: true }).exec((err, deleted) => {
+  CourseModel.remove({ _id: id }).setOptions({ single: true }).exec((err, deleted) => {
     if (err) { return res.end(notfoundstring) }
     console.log(`Permanently deleted item ${JSON.stringify(deleted)}`)
     return res.redirect('/course')
   })
 })
-
 
 module.exports = api
