@@ -59,10 +59,6 @@ const CourseSchema = new mongoose.Schema({
   }
   
 })
-<<<<<<< HEAD
 
 module.exports = mongoose.model('Course', CourseSchema)
 // the model Developer is for the developers collection in the database.
-=======
-module.exports = mongoose.model('Course', CourseSchema)
->>>>>>> 034f53212f483766d91d08c84f8038da52836e2a
