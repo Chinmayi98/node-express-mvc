@@ -9,22 +9,14 @@ const express = require('express')
 const api = express.Router()
 const LOG = require('../utils/logger.js')
 const Model = require('../models/course.js')
-<<<<<<< HEAD
 const find = require('lodash.find')
 const LOG = require('../utils/logger.js')
-=======
->>>>>>> 034f53212f483766d91d08c84f8038da52836e2a
 const notfoundstring = 'Could not find course with id='
 
 // RESPOND WITH JSON DATA  --------------------------------------------
 
 // GET all JSON
-<<<<<<< HEAD
-
-  api.get('/findall', (req, res) => {
-=======
 api.get('/findall', (req, res) => {
->>>>>>> 034f53212f483766d91d08c84f8038da52836e2a
   LOG.info(`Handling /findall ${req}`)
   Model.find({}, (err, data) => {
     if (err) { return res.end('Error finding all') }
@@ -34,12 +26,7 @@ api.get('/findall', (req, res) => {
 
 
 // GET one JSON by ID
-<<<<<<< HEAD
-
-  api.get('/findone/:id', (req, res) => {
-=======
 api.get('/findone/:id', (req, res) => {
->>>>>>> 034f53212f483766d91d08c84f8038da52836e2a
   LOG.info(`Handling /findone ${req}`)
   const id = parseInt(req.params.id)
   Model.find({ _id: id }, (err, results) => {
@@ -50,14 +37,9 @@ api.get('/findone/:id', (req, res) => {
 
 // RESPOND WITH VIEWS  --------------------------------------------
 
-<<<<<<< HEAD
 // GET to this controller base URI (the default)
 
   api.get('/', (req, res) => {
-=======
-// GET /
-api.get('/', (req, res) => {
->>>>>>> 034f53212f483766d91d08c84f8038da52836e2a
   LOG.info(`Handling GET / ${req}`)
   Model.find({}, (err, data) => {
     if (err) { return res.end('Error') }
@@ -68,12 +50,8 @@ api.get('/', (req, res) => {
 
 
 // GET create
-<<<<<<< HEAD
 
   api.get('/create', (req, res) => {
-=======
-api.get('/create', (req, res) => {
->>>>>>> 034f53212f483766d91d08c84f8038da52836e2a
   LOG.info(`Handling GET /create ${req}`)
   Model.find({}, (err, data) => {
     if (err) { return res.end('error on create') }
@@ -84,22 +62,14 @@ api.get('/create', (req, res) => {
 })
 
 // GET /delete/:id
-<<<<<<< HEAD
   api.get('/delete/:id', (req, res) => {
-=======
-api.get('/delete/:id', (req, res) => {
->>>>>>> 034f53212f483766d91d08c84f8038da52836e2a
   LOG.info(`Handling GET /delete/:id ${req}`)
   const id = parseInt(req.params.id)
   Model.find({ _id: id }, (err, results) => {
     if (err) { return res.end(notfoundstring) }
     LOG.info(`RETURNING VIEW FOR ${JSON.stringify(results)}`)
     res.locals.course = results[0]
-<<<<<<< HEAD
     return res.render('course/delete')
-=======
-    return res.render('course/delete.ejs')
->>>>>>> 034f53212f483766d91d08c84f8038da52836e2a
   })
 })
 
@@ -112,11 +82,7 @@ api.get('/details/:id', (req, res) => {
     if (err) { return res.end(notfoundstring) }
     LOG.info(`RETURNING VIEW FOR ${JSON.stringify(results)}`)
     res.locals.course = results[0]
-<<<<<<< HEAD
     return res.render('course/details')
-=======
-    return res.render('course/details.ejs')
->>>>>>> 034f53212f483766d91d08c84f8038da52836e2a
   })
 })
 
@@ -129,45 +95,28 @@ api.get('/edit/:id', (req, res) => {
     if (err) { return res.end(notfoundstring) }
     LOG.info(`RETURNING VIEW FOR${JSON.stringify(results)}`)
     res.locals.course = results[0]
-<<<<<<< HEAD
     return res.render('course/edit')
-=======
-    return res.render('course/edit.ejs')
->>>>>>> 034f53212f483766d91d08c84f8038da52836e2a
   })
 })
 
 
 // HANDLE EXECUTE DATA MODIFICATION REQUESTS --------------------------------------------
 
-<<<<<<< HEAD
-// POST new
-
-=======
 // POST /save
->>>>>>> 034f53212f483766d91d08c84f8038da52836e2a
 api.post('/save', (req, res) => {
   LOG.info(`Handling POST ${req}`)
   LOG.debug(JSON.stringify(req.body))
   const item = new Model()
   LOG.info(`NEW ID ${req.body._id}`)
   item._id = parseInt(req.body._id)
-<<<<<<< HEAD
-  item.SchoolNumber = req.body.schoolNumber
-  item.CourseNumber = req.body.courseNumber
-=======
   item.SchoolNumber = req.body.SchoolNumber
   item.CourseNumber = req.body.CourseNumber
->>>>>>> 034f53212f483766d91d08c84f8038da52836e2a
   item.Name = req.body.Name
   item.inSpring = req.body.inSpring
   item.inSummer = req.body.inSummer
   item.inFall = req.body.inFall
-<<<<<<< HEAD
   item.Department = req.body.Department
   //res.send(`THIS FUNCTION WILL SAVE A NEW course ${JSON.stringify(item)}`)
-=======
->>>>>>> 034f53212f483766d91d08c84f8038da52836e2a
   item.save((err) => {
     if (err) { return res.end('ERROR: item could not be saved') }
     LOG.info(`SAVING NEW item ${JSON.stringify(item)}`)
@@ -175,12 +124,7 @@ api.post('/save', (req, res) => {
   })
 })
 
-<<<<<<< HEAD
-// POST update with id
-
-=======
 // POST save with id
->>>>>>> 034f53212f483766d91d08c84f8038da52836e2a
 api.post('/save/:id', (req, res) => {
   LOG.info(`Handling SAVE request ${req}`)
   const id = parseInt(req.params.id)
@@ -188,21 +132,13 @@ api.post('/save/:id', (req, res) => {
   Model.updateOne({ _id: id },
     { // use mongoose field update operator $set
       $set: {
-<<<<<<< HEAD
-        SchoolNumber: req.body.schoolNumber,
-        CourseNumber: req.body.courseNumber,
-=======
         SchoolNumber: req.body.SchoolNumber,
         CourseNumber: req.body.CourseNumber,
->>>>>>> 034f53212f483766d91d08c84f8038da52836e2a
         Name: req.body.Name,
         inSpring: req.body.inSpring,
         inSummer: req.body.inSummer,
         inFall: req.body.inFall,
-<<<<<<< HEAD
         Department: req.body.Department
-=======
->>>>>>> 034f53212f483766d91d08c84f8038da52836e2a
       }
     },
     (err, item) => {
