@@ -14,56 +14,49 @@ const CourseSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  
-  SchoolNumber: {
+  SchoolNumber : {
     type: String,
-    minlength: 2,
+    minlength: 1,
     maxlength: 2,
-    required: false,
-    default: 'School Number'
+    required: true,
+    unique: false,
+    default:44
   },
-  CourseNumber: {
+  CourseNumber : {
     type: String,
-    minlength: 3,
+    minlength: 1,
     maxlength: 3,
-    required: false,
-    default: 'Course Number'
+    required: true,
+    default: 563
   },
-  Name: {
+  Name : {
     type: String,
-    minlength: 5,
+    minlength: 4,
     maxlength: 100,
     required: true,
-    unique: true 
+    default: 'Developing Web Apps and Services'
   },
-  inSpring: {
-      type: Boolean,
-      minlength: 1,
-      maxlength: 3,
-      required: true,
-  },
-  inSummer: {
+  inSpring : {
     type: Boolean,
-    minlength: 5,
-    maxlength: 100,
+    minlength: 1,
+    maxlength: 3,
     required: true,
-    unique: true  
+    
   },
-  inFall: {
+  inSummer : {
     type: Boolean,
-    minlength: 5,
-    maxlength: 100,
+    minlength: 1,
+    maxlength: 3,
     required: true,
-    unique: true  
+    
   },
-  Department: {
-    type: String,
-    minlength: 2,
-    maxlength: 100,
-    required: true
+  inFall : {
+    type: Boolean,
+    minlength: 1,
+    maxlength: 3,
+    required: true,
+   
   }
-
+  
 })
-
 module.exports = mongoose.model('Course', CourseSchema)
-// the model Developer is for the developers collection in the database.
