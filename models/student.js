@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const StudentSchema = new mongoose.Schema({
+const StudentSchema =  new mongoose.Schema({
 
   _id: {
     type: String,
