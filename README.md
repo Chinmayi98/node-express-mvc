@@ -12,6 +12,10 @@ Section - 04
 ## Team Slide
 ![](https://raw.githubusercontent.com/Chinmayi98/mvc-app/master/Team.PNG)
 
+## Developers
+- [Chinmayi Ambati](https://chinmayi98.github.io/p2-styled-site/)
+- [Mahalakshmi Kongari](https://mahalakshmikongari.github.io/p2PubliseSite/)
+- [Deepthi Tejaswani Chokka](https://deepthi1003.github.io/p2-published-site/)
 ## Team Members
 - Chinmayi Ambati
 - Mahalakshmi Kongari
