@@ -1,11 +1,3 @@
-/**
-*  Developer model
-*  Describes the characteristics of each attribute in a developer  resource.
-*
-* @author Maha Lakshmi Kongari <mahalakshmi.kongari@gmail.com>
-* @requires mongoose
-*
-*/
 const mongoose = require('mongoose')
 
 const CourseSchema = new mongoose.Schema({
@@ -14,49 +6,36 @@ const CourseSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
- schoolNumber: {
+  SchoolNumber: {
     type: String,
     minlength: 2,
     maxlength: 2,
     required: true,
-    
+    default: "44"
   },
-  courseNumber: {
-    type: String ,
+  CourseNumber: {
+    type: String,
     minlength: 3,
     maxlength: 3,
-    required: true,
+    required: true
   },
   Name: {
     type: String,
     minlength: 3,
     maxlength: 100,
-    required: true,
+    required: true
   },
   inSpring: {
     type: Boolean,
-    minlength: 3,
-    maxlength: 100,
     required: true
   },
   inSummer: {
     type: Boolean,
-    minlength: 2,
-    maxlength: 100,
     required: true
   },
   inFall: {
     type: Boolean,
-    minlength: 4,
-    maxlength: 12,
     required: true
-  },
-  Major: {
-    type: String,
-    minlength: 2,
-    maxlength: 100,
-    required: true,
-  },
+  }
 })
 module.exports = mongoose.model('Course', CourseSchema)
-// the model Course is for the courses collection in the database.

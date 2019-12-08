@@ -1,6 +1,6 @@
 {
-  "name": "node-express-mvc-views",
-  "description": "Express web app using MVC (with views)",
+  "name": "node-express",
+  "description": "Express web app using MVC",
   "version": "1.0.0",
   "author": "Denise Case",
   "dependencies": {
@@ -11,7 +11,7 @@
     "cookie-parser": "latest",
     "consolidate": "latest",
     "dotenv": "latest",
-    "ejs": "latest",
+    "ejs": "2.7.1",
     "errorhandler": "latest",
     "express": "latest",
     "express-ejs-layouts": "latest",

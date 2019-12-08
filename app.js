@@ -6,73 +6,6 @@
  *
  * The server-side app starts and begins listening for events.
  *
- *  @requires config
- *  @requires express
- **/
-
- /*
-const config = require('config')
-const express = require('express')
-const path = require('path')
-const logger = require('morgan')
-const helmet = require('helmet')
-const bodyParser = require('body-parser')
-const cookieParser = require('cookie-parser')
-const engines = require('consolidate')
-const expressLayouts = require('express-ejs-layouts')
-const app = express() // create an Express web app
-
-// Use hosting values if available, otherwise default
-const environment = process.env.NODE_ENV || 'development'
-const hostname = process.env.HOSTNAME || config.get('hostname')
-const port = process.env.PORT || config.get('port')
-
-// By default, Express does not serve static files.
-// use middleware to define a static assets folder 'public'
-app.use(express.static('public'))
-
-// Helmet helps you secure Express apps by setting various HTTP headers.
-// It's not a silver bullet, but it can help!
-// https://github.com/helmetjs/helmet
-app.use(helmet())
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'ejs')
-app.engine('ejs', engines.ejs)
-
-app.use(logger('dev'))
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
-app.use(cookieParser())
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(expressLayouts)
-
-// load seed data
-require('./utils/seeder.js')(app)
-
-// Use Express middleware to configure routing
-const routing = require('./routes/router.js')
-app.use('/', routing)
-
-app.listen(port, hostname, () => {
-  console.log(`App running at http://${hostname}:${port}/ in ${environment}`)
-  console.log('Hit CTRL-C CTRL-C to stop\n')
-})
-*/
-
-
-
-
-/**
- * @file app.js
- * The starting point of the application.
- * Express allows us to configure our app and use
- * dependency injection to add it to the http server.
- *
- * The server-side app starts and begins listening for events.
- *
  */
 
 // Module dependencies
@@ -101,20 +34,24 @@ LOG.info('Environment variables loaded into process.env.')
 
 // log port (Heroku issue)
 const port = process.env.PORT || 8089
-LOG.info(`Running on ${port}`)
+
+LOG.info(`Running on ${port}`)   
 
 // Are we in production or development?
 const isProduction = process.env.NODE_ENV === 'production'
+
 LOG.info(`Environment isProduction = ${isProduction}`)
 
 // choose the connection
 const dbURI = isProduction ? encodeURI(process.env.ATLAS_URI) : encodeURI(process.env.LOCAL_MONGODB_URI)
+
 LOG.info('MongoDB URL = ' + dbURI)
 
 // get dbName
 const DB_NAME = process.env.DB_NAME
 
 // set connection options
+
 const connectionOptions = {
   dbName: DB_NAME,
   useNewUrlParser: true,
@@ -141,10 +78,13 @@ const db = mongoose.connect(dbURI, connectionOptions, (err, client) => {
 const connection = mongoose.connection
 
 function seed (collectionName) {
+  
   LOG.info(`Seeding collection = ${collectionName}`)
   connection.db.collection(collectionName, (err, c) => {
     c.countDocuments((err, count) => {
-      if (!err && count === 0) { c.insertMany(require('./data/' + collectionName + '.json')) }
+      if (!err && count === 0) { 
+        c.insertMany(require('./data/' + collectionName + '.json')) 
+      }
     })
     c.find({}).toArray((err, data) => {
       // console.log(data)
@@ -157,6 +97,7 @@ connection.once('open', function () {
   LOG.info('MongoDB event open')
   LOG.info(`MongoDB connected ${dbURI}\n`)
 
+  seed('developers')
   seed('courses')
   seed('sections')
   seed('students')
@@ -187,7 +128,7 @@ app.set('view engine', 'ejs')
 app.engine('ejs', engines.ejs)
 
 // configure middleware.....................................................
-app.use(favicon(path.join(__dirname, '/public/images/favicon.ico')))
+// app.use(favicon(path.join(__dirname, '/public/images/favicon.ico')))
 
 // log every call and pass it on for handling
 app.use((req, res, next) => {
