@@ -2,7 +2,7 @@
 *  Student controller
 *  Handles requests related to student resources.
 *
-* @author pranay
+* @author 
 *
 */
 const express = require('express')

@@ -2,7 +2,7 @@
 *  Section controller
 *  Handles requests related to section resources.
 *
-* @author pavan 
+* @author 
 *
 */
 const express = require('express')

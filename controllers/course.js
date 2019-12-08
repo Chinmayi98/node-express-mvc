@@ -2,7 +2,7 @@
 *  Courses controller
 *  Handles requests related to course resources.
 *
-* @author chetan
+* @author maha
 *
 */
 
