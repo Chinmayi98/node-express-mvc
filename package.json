@@ -17,7 +17,7 @@
     "express-ejs-layouts": "latest",
     "express-validator": "latest",
     "helmet": "latest",
-    "lodash": "latest",
+    "lodash": "4.17.20",
     "lodash.find": "latest",
     "mongodb": "^3.2.3",
     "mongoose": "latest",
