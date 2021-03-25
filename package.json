@@ -20,7 +20,7 @@
     "lodash": "latest",
     "lodash.find": "latest",
     "mongodb": "^3.2.3",
-    "mongoose": "latest",
+    "mongoose": "5.12.2",
     "morgan": "latest",
     "request": "latest",
     "serve-favicon": "latest",
