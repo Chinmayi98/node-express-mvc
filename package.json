@@ -15,7 +15,7 @@
     "errorhandler": "latest",
     "express": "latest",
     "express-ejs-layouts": "latest",
-    "express-validator": "latest",
+    "express-validator": "6.5.0",
     "helmet": "latest",
     "lodash": "latest",
     "lodash.find": "latest",
